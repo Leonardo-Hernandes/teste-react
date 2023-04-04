@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  background-color: #f3f3f3;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
