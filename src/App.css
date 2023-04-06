@@ -7,9 +7,16 @@
   background: linear-gradient(110deg, #bab7b6 60%, #299e9a 60%);
 }
 
-form {
+/* form {
   background-color: #f3f3f3;
   box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+} */
+.formBox {
+  background-color: #f3f3f3;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  margin-top: 6rem;
+  padding: 0.8rem;
 }
 
 .App-logo {

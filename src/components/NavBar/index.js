@@ -1,31 +1,27 @@
 import './styles.css';
-import { Link } from "react-router-dom";
-
 import {
-    Navbar,
-    Nav,
-    Container
-} from 'react-bootstrap';
+    AppBar,
+    Box,
+    Toolbar,
+    Typography,
+    Button
+} from '@mui/material';
 
 function NavBar() {
 
     return (
-        <Navbar bg="light" expand="lg">
-            <Container>
-                <div>
-                    <Navbar.Brand className='title' href="/">Cad+</Navbar.Brand>
-                </div>
-                <div>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav" style={{ justifyContent: "flex-end!important", alignItems: "flex-end!important" }}>
-                        <Nav className="me-auto">
-                            <Nav.Link href="/login" className='buttonTitle'>Login</Nav.Link>
-                            <Nav.Link href="/register" className='buttonTitle'>Cadastro</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </div>
-            </Container>
-        </Navbar>
+        <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static" style={{ backgroundColor: '#f3f3f3' }}>
+                <Toolbar>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ color: "#000" }}>
+                        Cad+
+                    </Typography>
+                    <Button variant="text" style={{color: "#000"}} href="/" >Página inicial</Button>
+                    <Button variant="text" style={{color: "#000"}} href="/login" >Login</Button>
+                    <Button variant="text" style={{color: "#000"}} href="/register" >Cadastro</Button>
+                </Toolbar>
+            </AppBar>
+        </Box>
     )
 }
 

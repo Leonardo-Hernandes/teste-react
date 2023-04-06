@@ -16,7 +16,9 @@ import {
   Zoom,
   Grid,
   Typography,
-  IconButton
+  IconButton,
+  Snackbar,
+  Alert
 }
   from '@mui/material';
 import makePayload from './makePayload';
@@ -24,6 +26,8 @@ import makePayload from './makePayload';
 function Register() {
   const [adresses, setAdresses] = useState([]);
   const [isLoading, setIsLoading] = useState();
+  const [openSuccess, setOpenSuccess] = useState();
+  const [openError, setOpenError] = useState();
   const formik = useRegistrationForm();
 
   const handleSubmit = async () => {
@@ -31,13 +35,23 @@ function Register() {
     const payload = makePayload(formik.values, adresses)
 
     try {
-      const response = await api.post("/api/users", payload)
-      console.log(response)
+      await api.post("/api/users", payload)
+
+      setOpenSuccess(true)
       setIsLoading(false)
     } catch (error) {
       console.log(error)
+      setOpenError(true)
       setIsLoading(false)
     }
+  }
+
+  const handleCloseSuccess = () => {
+    setOpenSuccess(false);
+  }
+
+  const handleCloseError = () => {
+    setOpenError(false);
   }
 
   const handleAddAdress = (adress) => {
@@ -63,7 +77,7 @@ function Register() {
   return (
     <>
       <NavBar />
-      <Zoom in={true} style={{ transitionDelay: '200ms', height: "95vh" }}>
+      <Zoom in={true} style={{ transitionDelay: '200ms' }}>
         <Container maxWidth="sm">
 
           <Box sx className="formBox">
@@ -223,6 +237,16 @@ function Register() {
           </Box>
         </Container>
       </Zoom>
+      <Snackbar open={openSuccess} autoHideDuration={3000} onClose={handleCloseSuccess}>
+        <Alert onClose={handleCloseSuccess} severity="success" sx={{ width: '100%' }}>
+          Cadastro efetuado com sucesso!
+        </Alert>
+      </Snackbar>
+      <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
+        <Alert onClose={handleCloseError} severity="error" sx={{ width: '100%' }}>
+          Ops, aconteceu algo de errado, tente novamente por favor!
+        </Alert>
+      </Snackbar>
     </>
   )
 }
