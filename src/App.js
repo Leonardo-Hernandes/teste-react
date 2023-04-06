@@ -1,12 +1,12 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Register from './pages/Register'
-import Login from './pages/Login'
+
+import AppRoutes from './routes'
 
 function App() {
   return (
-    <div>
-      <Login/>
+    <div className='backgroundTheme'>
+      <AppRoutes />
     </div>
   );
 }

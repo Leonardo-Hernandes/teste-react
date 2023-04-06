@@ -2,11 +2,9 @@
   text-align: center;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.backgroundTheme {
   height: 100vh;
+  background: linear-gradient(110deg, #bab7b6 60%, #299e9a 60%);
 }
 
 form {
