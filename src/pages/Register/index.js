@@ -39,6 +39,7 @@ function Register() {
 
       setOpenSuccess(true)
       setIsLoading(false)
+      window.location.href = "/login"
     } catch (error) {
       console.log(error)
       setOpenError(true)
@@ -79,7 +80,6 @@ function Register() {
       <NavBar />
       <Zoom in={true} style={{ transitionDelay: '200ms' }}>
         <Container maxWidth="sm">
-
           <Box sx className="formBox">
             <Grid container spacing={2}>
               <Grid item xs={12}>

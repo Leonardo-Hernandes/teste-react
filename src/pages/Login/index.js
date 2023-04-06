@@ -30,6 +30,7 @@ function Login() {
 
             setOpenSuccess(true)
             setIsLoading(false)
+            window.location.href = "/"
         } catch (error) {
             setOpenError(true)
             setIsLoading(false)
