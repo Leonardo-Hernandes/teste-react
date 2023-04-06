@@ -6,6 +6,7 @@ import { useRegistrationForm } from './useRegistrationForm';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import InputMask from 'react-input-mask';
+import api from '../../axios/config';
 
 import {
   Container,
@@ -15,17 +16,28 @@ import {
   Zoom,
   Grid,
   Typography,
-  InputAdornment,
   IconButton
 }
   from '@mui/material';
+import makePayload from './makePayload';
 
 function Register() {
   const [adresses, setAdresses] = useState([]);
+  const [isLoading, setIsLoading] = useState();
   const formik = useRegistrationForm();
 
-  const handleSubmit = () => {
-    console.log(formik.values)
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    const payload = makePayload(formik.values, adresses)
+
+    try {
+      const response = await api.post("/api/users", payload)
+      console.log(response)
+      setIsLoading(false)
+    } catch (error) {
+      console.log(error)
+      setIsLoading(false)
+    }
   }
 
   const handleAddAdress = (adress) => {
@@ -204,7 +216,7 @@ function Register() {
                   disabled={!formik.isValid}
                   onClick={handleSubmit}
                 >
-                  Cadastrar
+                  {isLoading ? 'Carregando' : 'Cadastrar'}
                 </Button>
               </Grid>
             </Grid>
